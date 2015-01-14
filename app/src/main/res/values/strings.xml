@@ -11,5 +11,9 @@
     <string name="pref_location_key" translatable="false">location</string>
     <string name="pref_location_default" translatable="false">19034</string>
     <string name="pref_units_key" translatable="false">units</string>
+    <string name="pref_units_metric">Metric</string>
+    <string name="pref_units_imperial">Imperial</string>
+    <string name="pref_units_label">Units</string>
+    <string name="pref_units_dialog">Choose Your Units</string>
 
 </resources>

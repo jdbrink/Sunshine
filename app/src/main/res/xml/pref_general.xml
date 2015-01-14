@@ -5,12 +5,16 @@
         android:key="@string/pref_location_key"
         android:defaultValue="@string/pref_location_default"
         android:singleLine="true"
-        android:inputType="text" />
+        android:inputType="text"
+        android:selectAllOnFocus="true"/>
 
-    <MultiSelectListPreference
-        android:title="Select Units"
+    <ListPreference
+        android:entries="@array/pref_units_options"
+        android:entryValues="@array/pref_units_values"
+        android:defaultValue="@string/pref_units_metric"
+        android:title="@string/pref_units_label"
         android:key="@string/pref_units_key"
-        android:dialogMessage="Select Units"
+        android:dialogTitle="@string/pref_units_dialog"
         />
 
 

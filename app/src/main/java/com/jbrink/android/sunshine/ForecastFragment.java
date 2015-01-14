@@ -31,8 +31,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by JDB on 01/08/2015.
@@ -115,6 +115,8 @@ public class ForecastFragment extends Fragment {
         updateWeather();
     }
 
+
+
     public class FetchForecastTask extends AsyncTask<String,Void,String[]> {
 
         private final static String LOG_TAG = "FetchForecastTask";
@@ -134,6 +136,17 @@ public class ForecastFragment extends Fragment {
          * Prepare the weather high/lows for presentation.
          */
         private String formatHighLows(double high, double low) {
+
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity().getBaseContext());
+            String unitType = prefs.getString(getString(R.string.pref_units_key),getString(R.string.pref_units_metric));
+
+            if (unitType.equals("Imperial")){
+                high = (high * 1.8) + 32;
+                low = (low * 1.8) + 32;
+            } else if(!unitType.equals("Metric")){
+                Log.d(LOG_TAG, "Unit type not found: " + unitType);
+            }
+
             // For presentation, assume the user doesn't care about tenths of a degree.
             long roundedHigh = Math.round(high);
             long roundedLow = Math.round(low);
